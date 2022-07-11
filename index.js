@@ -14,7 +14,6 @@ function getMovies(event) {
     fetch(api)
     .then(response => response.json())
     .then(data => {
-        console.log(data)
         if(data.Response === 'False'){
             throw new Error('invaild movie name')
         }
@@ -25,6 +24,7 @@ function getMovies(event) {
             fetch(`https://www.omdbapi.com/?i=${movieId}&apikey=ed71ffcd`)
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 mainEl.innerHTML += `
                 <div class="one">
                     <div class="movie-item">
