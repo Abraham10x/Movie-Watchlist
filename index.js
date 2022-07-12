@@ -24,12 +24,15 @@ function getMovies(event) {
             fetch(`https://www.omdbapi.com/?i=${movieId}&apikey=ed71ffcd`)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                let moviePoster = data.Poster
+                if(data.Poster === `N/A`){
+                    moviePoster = 'images/default-poster.png'
+                }
                 mainEl.innerHTML += `
                 <div class="one">
                     <div class="movie-item">
                         <img
-                            src="${data.Poster}"
+                            src="${moviePoster}"
                             alt="movie cover image"
                             class="movie-cover"
                         />
